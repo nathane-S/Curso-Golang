@@ -20,16 +20,28 @@ func teamResult(team string, match []string) int {
 
 func generateResult(match []string) map[string]int {
 	teams := []string{match[0], match[1]}
-	var teamsResults map[string]int
+	teamsResults := make(map[string]int, 0)
 	for _, team := range teams {
+		teamsResults[team] = teamResult(team, match)
 	}
+	return teamsResults
 }
 
 func main() {
-	entrada := `Allegoric Alaskans;Blithering Badgers;draw`
-	arr := strings.Split(entrada, ";")
-	fmt.Println(arr[2])
+	entrada := `Allegoric Alaskans;Blithering Badgers;win
+Devastating Donkeys;Courageous Californians;draw`
+	matches := strings.Split(entrada, "\n")
 
-	Result := teamResult(arr[1], arr)
-	fmt.Println(Result)
+	fmt.Println(matches)
+	matchResults := []map[string]int{}
+	for _, match := range matches {
+		arr := strings.Split(match, ";")
+		matchResult := generateResult(arr)
+		matchResults = append(matchResults, matchResult)
+	}
+	fmt.Println(matchResults)
+
+	//Result := generateResult(arr)
+	//fmt.Println(Result["Allegoric Alaskans"])
+
 }
