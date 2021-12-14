@@ -1,3 +1,3 @@
 # Curso-Golang
 
-Repositorio  
+Repositório criado para auxiliar no aprendizado do curso de  GO.
