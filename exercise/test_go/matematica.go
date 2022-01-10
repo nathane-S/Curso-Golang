@@ -1,8 +1,9 @@
 package matematica
 
-import
+import {
 	"fmt"
 	"strconv"
+}
 
 func Media(numeros ...float64)float64{
 	total := 0.0
