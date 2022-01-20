@@ -15,13 +15,19 @@ func exec(db *sql.DB, sql string) sql.Result {
 }
 
 func main() {
-
-	db, err := sql.Open("mysql", "root:")
+	db, err := sql.Open("mysql", "root:yourpasswd@/")
 	if err != nil {
 		panic(err)
 	}
 	defer db.Close()
 
 	exec(db, "create database if not exists cursogo")
-	exec(db, "Use cursogo")
+	exec(db, "use cursogo")
+	exec(db, "drop table if exists usuarios")
+	exec(db, `create table usuarios(
+		id integer auto_increment,
+		nome varchar(80),
+		PRIMARY KEY (id)
+	)`)
+
 }
